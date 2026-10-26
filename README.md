@@ -1,4 +1,31 @@
-# Hackathon Frontend: One Piece — Rumbo al Grand Line
+# Log Pose Console
+
+## Integrantes
+
+| Nombre | Código | GitHub |
+|:-------|:-------|:-------|
+| TODO Sebastián | TODO | [@Sebas-Leo](https://github.com/Sebas-Leo) |
+| Camila Araceli Alfaro Chuquino | TODO | [@camilaalfaro-afk](https://github.com/camilaalfaro-afk) |
+| TODO Ariana Blanco | TODO | [@becomon](https://github.com/becomon) |
+
+## Cómo ejecutar
+
+Requisitos: Node 24 LTS y npm.
+
+```bash
+npm install
+cp .env.example .env   # solo si no existe .env
+npm run dev
+```
+
+- `npm run build`: build de producción (TypeScript estricto + Vite).
+- La URL de la API se lee de `VITE_API_BASE_URL` (archivo `.env`).
+
+Plan de trabajo del equipo: [docs/PLAN.md](docs/PLAN.md).
+
+---
+
+## Enunciado: Hackathon Frontend: One Piece — Rumbo al Grand Line
 
 > *"¡El One Piece existe!"* — Edward Newgate
 
