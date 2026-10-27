@@ -9,7 +9,7 @@
 
 | Nombre | Código | GitHub |
 |:-------|:-------|:-------|
-| Royer Sebastian Ramos Vargas | TODO | [@Sebas-Leo](https://github.com/Sebas-Leo) |
+| Royer Sebastian Ramos Vargas | 202510069 | [@Sebas-Leo](https://github.com/Sebas-Leo) |
 | Camila Araceli Alfaro Chuquino | 202410438 | [@camilaalfaro-afk](https://github.com/camilaalfaro-afk) |
 | Ariana Belen Blanco Anicama | 202420010 | [@becomon](https://github.com/becomon) |
 
