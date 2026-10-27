@@ -10,7 +10,7 @@
 | Nombre | Código | GitHub |
 |:-------|:-------|:-------|
 | Royer Sebastian Ramos Vargas | TODO | [@Sebas-Leo](https://github.com/Sebas-Leo) |
-| Camila Araceli Alfaro Chuquino | TODO | [@camilaalfaro-afk](https://github.com/camilaalfaro-afk) |
+| Camila Araceli Alfaro Chuquino | 202410438 | [@camilaalfaro-afk](https://github.com/camilaalfaro-afk) |
 | Ariana Belen Blanco Anicama | TODO | [@becomon](https://github.com/becomon) |
 
 ## Cómo ejecutar
