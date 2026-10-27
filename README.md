@@ -1,25 +1,64 @@
 # Log Pose Console
 
+## Tripulación oficial
+
+- Nombre: **hackaton-H2-2**
+- Código: **TEAM-002**
+
 ## Integrantes
 
 | Nombre | Código | GitHub |
 |:-------|:-------|:-------|
-| TODO Sebastián | TODO | [@Sebas-Leo](https://github.com/Sebas-Leo) |
+| Royer Sebastian Ramos Vargas | TODO | [@Sebas-Leo](https://github.com/Sebas-Leo) |
 | Camila Araceli Alfaro Chuquino | TODO | [@camilaalfaro-afk](https://github.com/camilaalfaro-afk) |
-| TODO Ariana Blanco | TODO | [@becomon](https://github.com/becomon) |
+| Ariana Belen Blanco Anicama | TODO | [@becomon](https://github.com/becomon) |
 
 ## Cómo ejecutar
 
-Requisitos: Node 24 LTS y npm.
+Requisitos: Node 24 LTS y npm. Ejecuta los comandos desde la raíz de este repositorio.
 
-```bash
-npm install
-cp .env.example .env   # solo si no existe .env
+### Windows / PowerShell
+
+```powershell
+npm.cmd ci
+if (-not (Test-Path .env)) { Copy-Item .env.example .env }
+npm.cmd run dev
+```
+
+### Linux / macOS
+
+```sh
+npm ci
+[ -f .env ] || cp .env.example .env
 npm run dev
 ```
 
-- `npm run build`: build de producción (TypeScript estricto + Vite).
-- La URL de la API se lee de `VITE_API_BASE_URL` (archivo `.env`).
+Abre la URL que indique Vite en la terminal. La API se configura en `.env`:
+
+```env
+VITE_API_BASE_URL=https://logpose-api-jg7f.onrender.com/api/v1
+```
+
+La cuenta es compartida por la tripulación. Camila registra la cuenta oficial en Swagger y comparte las credenciales por privado. El código asignado por el servidor debe coincidir con `teamCode` en `hackathon.json`; no creen otra cuenta solo para obtener un código de entrega.
+
+### Verificación y entrega
+
+```powershell
+npm.cmd run build
+npm.cmd run lint
+npm.cmd run preview
+```
+
+`build` comprueba TypeScript estricto y genera `dist/`; `preview` sirve esa compilación localmente. El hosting debe redirigir las rutas de la aplicación a `index.html` para admitir recargas y enlaces directos.
+
+- CP1: registro, login, restauración de sesión, rutas privadas, logout y dashboard real.
+- CP2: carteles con paginación del servidor, filtros en la URL, búsqueda con debounce y detalle.
+- El listado usa `page=1` como primera página en la URL; la petición a la API convierte ese valor a `page=0`.
+- La búsqueda espera 400 ms sin escribir; Enter confirma de inmediato.
+- Pruebas de la inspección: [docs/CP3-GUIA.md](docs/CP3-GUIA.md). Pasos 4–8 verificados con la API real; evidencia y explicaciones en [docs/CP3-REVISION-ARIANA.md](docs/CP3-REVISION-ARIANA.md).
+- CP4 y CP5 esperan la aprobación del CP3, según [docs/PLAN.md](docs/PLAN.md).
+
+Los nombres, la tripulación y TEAM_CODE ya están completos. Antes de entregar, completen los códigos universitarios pendientes en este README y en `hackathon.json`. No incluyan contraseñas ni tokens en los archivos o commits.
 
 Plan de trabajo del equipo: [docs/PLAN.md](docs/PLAN.md).
 
