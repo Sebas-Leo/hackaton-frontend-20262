@@ -1,0 +1,113 @@
+/*
+ * CP5 motion rules. Every animation lives inside `prefers-reduced-motion: no-preference`,
+ * so with reduced motion the story is fully readable and the map/metrics update instantly.
+ */
+
+/* ---------- Reading progress (scroll-driven) ---------- */
+
+.saga-progress-bar {
+  transform-origin: left center;
+  /* Fallback: JS writes --saga-scroll (0..1) when scroll timelines are not supported. */
+  transform: scaleX(var(--saga-scroll, 0));
+}
+
+@supports (animation-timeline: scroll()) {
+  .saga-progress-bar {
+    animation: saga-progress linear both;
+    animation-timeline: scroll(root block);
+  }
+}
+
+@keyframes saga-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ---------- Motion (only when the user did not ask to reduce it) ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .saga-root {
+    transition:
+      background-color 0.6s ease,
+      color 0.6s ease;
+  }
+
+  .saga-ship {
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .saga-route-sailed {
+    transition: stroke-dashoffset 0.7s ease;
+  }
+
+  .saga-meter-fill {
+    transition: width 0.5s ease;
+  }
+
+  .saga-island-active {
+    animation: saga-pulse 1.6s ease-out infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  /* Stage entrance: CSS scroll-driven animation when supported... */
+  @supports (animation-timeline: view()) {
+    .saga-stage-content {
+      animation: saga-reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 35%;
+    }
+  }
+
+  /* ...and an equivalent IntersectionObserver-driven transition when not. */
+  @supports not (animation-timeline: view()) {
+    .saga-stage-content {
+      opacity: 0.2;
+      transform: translateY(32px);
+      transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+    }
+
+    .saga-stage[data-visible='true'] .saga-stage-content {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+@keyframes saga-reveal {
+  from {
+    opacity: 0.2;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes saga-pulse {
+  from {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  to {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+/* ---------- View transitions between /sagas and /sagas/:id ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}

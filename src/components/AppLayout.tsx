@@ -13,7 +13,8 @@ export function AppLayout() {
 
   return (
     <div className="min-h-dvh">
-      <header className="sticky top-0 z-30 border-b border-slate-800 bg-slate-950/90 backdrop-blur">
+      {/* Sticky only on desktop: on mobile it wraps to several rows and would cover sticky page panels. */}
+      <header className="relative z-30 border-b border-slate-800 bg-slate-950/90 backdrop-blur lg:sticky lg:top-0">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-6 gap-y-2 px-4 py-3">
           <span className="font-bold text-amber-300">Log Pose Console</span>
           <nav className="flex flex-wrap gap-1 text-sm">
