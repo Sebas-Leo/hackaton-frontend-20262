@@ -1,28 +1,45 @@
 # Plan del equipo
 
-## División (por carpeta, para no pisarnos)
+> **Regla de los TA:** solo se puede avanzar hasta el CP3. El CP4 y el CP5 se trabajan recién después de
+> aprobar la inspección. Las carpetas `src/features/news` y `src/features/sagas` son placeholders vacíos:
+> no se escribe nada ahí hasta tener el Log Pose.
 
-| Quién | Checkpoint | Carpeta que es SUYA | Depende de |
-|:------|:-----------|:--------------------|:-----------|
-| Sebastián | Base + CP1 (listo) + CP2 | `src/auth`, `src/lib`, `src/hooks`, `src/components`, `src/pages`, `src/features/wanted` | nada |
-| Camila | CP4 · News Coo | `src/features/news` | base (ya está en `main`) |
-| Ariana | CP5 · Poneglyph | `src/features/sagas` | base (ya está en `main`) |
-| Los 3 | CP3 · Inspección | — | CP1 + CP2 funcionando |
+## Fase 1 · Hasta aprobar el CP3
 
-Por qué así: CP1 + CP2 son el camino crítico hacia el CP3 (sin Log Pose, CP4 y CP5 valen 0). Al estar en un
-solo carril, CP4 y CP5 no esperan a nadie: se construyen desde el minuto 0 con las respuestas de ejemplo de
-Swagger y se conectan a la API real cuando aprobemos el CP3.
+CP1 y CP2 ya están en `main`. Ahora el trabajo es que funcionen con la API real y que los tres podamos
+explicarlos: **el inspector elige quién responde**.
+
+| Quién | Tarea | En la inspección domina |
+|:------|:------|:------------------------|
+| Sebastián | Probar CP1 y CP2 con la API real y corregir bugs | Todo (y se lo explica a los demás) |
+| Camila | Registrar la tripulación oficial en Swagger. Probar los pasos 1–3 y 9 del guion | CP1 (`docs/CP3-GUIA.md`, sección CP1) |
+| Ariana | Completar `README.md` y `hackathon.json`. Probar los pasos 4–8 del guion | CP2 (`docs/CP3-GUIA.md`, sección CP2) |
+| Los 3 | Ronda cruzada: cada uno explica la parte del otro, sin mirar el código | CP1 + CP2 |
+
+Pedimos la inspección cuando:
+
+- [ ] `npm run build` pasa sin errores.
+- [ ] El guion completo de la demo funciona con la API real y la cuenta oficial.
+- [ ] Cada uno respondió dos preguntas de la guía sin ayuda.
+
+## Fase 2 · Después de aprobar (con Log Pose)
+
+| Quién | Checkpoint | Carpeta |
+|:------|:-----------|:--------|
+| Camila | CP4 · News Coo | `src/features/news` |
+| Ariana | CP5 · Poneglyph | `src/features/sagas` |
+| Sebastián | Apoyo, revisión y entrega final | — |
+
+Las rutas ya están registradas en `src/router.tsx`: no hace falta tocar el router para empezar.
 
 ## Reglas
 
 1. Solo editas tu carpeta. Si necesitas tocar algo compartido (`src/types/api.ts`, `src/router.tsx`,
    `src/components/ui`), avisa en el grupo antes.
-2. Las rutas ya están registradas en `src/router.tsx`. No hace falta tocar el router para empezar.
-3. Rama por checkpoint: `feat/cp4-news`, `feat/cp5-sagas`. Merge a `main` seguido (cada ~20 min).
-4. Antes de cada push: `npm run build` sin errores. Sin `any` (descuenta 2 puntos).
-5. Datos de ejemplo de Swagger solo mientras no tengamos Log Pose. Antes de las 2:00 **todo** debe venir de la
-   API real (datos hardcodeados invalidan la entrega).
-6. Nunca subir la contraseña de la tripulación al repo.
+2. Rama por checkpoint (`feat/cp4-news`, `feat/cp5-sagas`). Merge a `main` seguido.
+3. Antes de cada push: `npm run build` sin errores. Sin `any` (descuenta 2 puntos).
+4. Todo sale de la API real: datos hardcodeados invalidan la entrega.
+5. Nunca subir la contraseña de la tripulación al repo. Se comparte por privado.
 
 ## Lo que ya existe para usar
 
@@ -42,15 +59,3 @@ const feed = useApi(
   [type],
 )
 ```
-
-## Primeros 10 minutos
-
-- [ ] Una persona registra la tripulación oficial en Swagger (`POST /auth/register`) y comparte email y
-      contraseña por privado. Esa es la cuenta para pedir el CP3.
-- [ ] Cada una: `git pull`, `npm install`, `npm run dev`, login con la cuenta oficial.
-- [ ] Leer en Swagger los endpoints de su checkpoint.
-
-## CP3: todas tenemos que poder explicar CP1 y CP2
-
-El inspector elige quién responde. Antes de pedir la inspección hacemos una pasada de 10 minutos con
-`docs/CP3-GUIA.md`.
